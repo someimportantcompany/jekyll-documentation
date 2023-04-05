@@ -1,0 +1,197 @@
+.main {
+  @media (min-width: 50rem) {
+    position: relative;
+    max-width: 800px;
+    margin-left: 248px;
+  }
+
+  @media (min-width: 66.5rem) {
+    margin-left: max( 264px, calc((100% - 1064px) / 2 + 264px) );
+  }
+
+  .main-header {
+    z-index: 0;
+    display: none;
+    background-color: #f5f6fa;
+
+    @media (min-width: 50rem) {
+      display: flex;
+      justify-content: space-between;
+      height: 60px;
+      background-color: #fff;
+      border-bottom: 1px solid #eeebee;
+    }
+  }
+
+  .main-content-wrap {
+    padding: 1rem;
+
+    @media (min-width: 50rem) {
+      padding: 2rem;
+    }
+  }
+}
+
+.sidebar {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f6fa;
+
+  @media (min-width: 50rem) {
+    flex-flow: column nowrap;
+    position: fixed;
+    width: 248px;
+    height: 100%;
+    border-right: 1px solid #eeebee;
+    align-items: flex-end;
+  }
+
+  @media (min-width: 66.5rem) {
+    width: calc((100% - 1064px) / 2 + 264px);
+    min-width: 264px;
+  }
+
+  .site-header {
+    display: flex;
+    min-height: 60px;
+    align-items: center;
+    border-bottom: 1px solid #eeebee;
+
+    .site-title {
+      padding-right: 1rem;
+      padding-left: 1rem;
+      flex-grow: 1;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      color: #27262b;
+      font-size: 18px !important;
+      line-height: 1.25;
+
+      @media (min-width: 50rem) {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+      }
+
+      @media (min-width: 31.25rem) {
+        font-size: 24px !important;
+        line-height: 1.25;
+      }
+    }
+
+    .site-title-button {
+      display: flex;
+      height: 100%;
+      padding: 1rem;
+      align-items: center;
+
+      @media (min-width: 50rem) {
+        display: none;
+      }
+    }
+  }
+
+  .site-nav {
+    display: none;
+
+    @media (min-width: 50rem) {
+      display: block;
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+      overflow-y: auto;
+      flex: 1 1 auto;
+    }
+
+    ul {
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      li {
+        font-size: 14px !important;
+        position: relative;
+        margin: 0;
+
+        @media (min-width: 50rem) and (min-width: 31.25rem) {
+          font-size: 14px !important;
+        }
+        @media (min-width: 50rem) {
+          font-size: 12px !important;
+        }
+        @media (min-width: 31.25rem) {
+          font-size: 16px !important;
+        }
+
+        > a {
+          display: block;
+          min-height: 3rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
+          line-height: 2.5rem;
+          padding-right: 3rem;
+          padding-left: 1rem;
+
+          @media (min-width: 50rem) {
+            min-height: 2rem;
+            line-height: 1.5rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
+          }
+        }
+
+        > .sub-list-expander {
+          position: absolute;
+          right: 0;
+          width: 3rem;
+          height: 3rem;
+          padding: 0.75rem;
+          color: #7253ed;
+
+          transform: rotate(90deg);
+
+          @media (min-width: 50rem) {
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+          }
+        }
+
+        &.active > a, a:hover {
+          background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
+          font-weight: 600;
+          text-decoration: none;
+        }
+
+        &.active > .sub-list-expander {
+          transform: rotate(-90deg);
+        }
+      }
+
+      > li {
+        &.active > ul {
+          display: block;
+        }
+
+        > ul {
+          display: none;
+          padding-left: 0.75rem;
+          list-style: none;
+        }
+      }
+    }
+  }
+
+  .site-nav, .site-header, .site-footer {
+    width: 100%;
+
+    @media (min-width: 66.5rem) {
+      width: 264px;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="{{ '/assets/style.css' | relative_url }}" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    {% if page.sidebar != false and site.sidebar %}
+    <div class="sidebar">
+      <div class="site-header">
+        <a href="{{ '/' | relative_url }}" class="site-title">Superdocs</a>
+        <a href="#" id="menu-button" class="site-title-button">☰</a>
+      </div>
+
+      {% include sidebar.html %}
+    </div>
+    <div class="main with-sidebar">
+    {% else %}
+    <div class="main">
+      <div class="site-header">
+        <a href="{{ '/' | relative_url }}" class="site-title">Superdocs</a>
+      </div>
+
+    {% endif %}
+      <div class="main-header">
+
+      </div>
+      <div class="main-content-wrap">
+        {{ content }}
+      </div>
+    </div>
+  </body>
+</html>
