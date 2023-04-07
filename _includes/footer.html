@@ -1,0 +1,22 @@
+<footer>
+  {% if site.footer.back-to-top %}
+  <p><a href="#top" id="back-to-top">{{ site.footer.back-to-top.label | default: 'Back to top' }}</a></p>
+  {% endif %}
+
+  {% if site.footer.content %}
+  {{ site.footer.content | markdownify }}
+  {% endif %}
+
+  {% if site.footer.gh-edit-link %}
+  <div class="d-flex mt-2">
+    <p class="text-small text-grey-dk-000 mb-0">
+      {% assign baseUrl = site.footer.gh-edit-link.baseUrl | default: 'https://github.com' %}
+      {% assign repo = site.footer.gh-edit-link.repository | default: site.repository %}
+      {% assign branch = site.footer.gh-edit-link.branch | default: 'main' %}
+      {% assign view = site.footer.gh-edit-link.view | default: 'edit' %}
+      {% assign label = site.footer.gh-edit-link.label | default: 'Edit this page on GitHub' %}
+      <a href="{{ baseUrl }}/{{ repo }}/{{ view }}/{{ branch }}/{{ page.path }}">{{ text }}</a>
+    </p>
+  </div>
+  {% endif %}
+</footer>

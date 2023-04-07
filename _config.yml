@@ -19,12 +19,11 @@ sidebar:
 
 footer:
   back-to-top:
-    text: Back to top
+    label: Back to top
   content: >-
     Copyright © 2023 <a href="https://someimportantcompany.github.io" target="_blank">Some Important Company</a>.
     <a href="https://github.com/someimportantcompany/jekyll-documentation/blob/master/LICENSE" target="_blank">MIT License</a>.
-  gh_edit_link:
-    label: Edit this page on Github
+  gh-edit-link:
     repository: someimportantcompany/jekyll-documentation
     branch: master
     view: tree

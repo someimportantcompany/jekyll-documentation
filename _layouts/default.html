@@ -16,18 +16,31 @@
       {% include sidebar.html %}
     </div>
     <div class="main with-sidebar">
-    {% else %}
-    <div class="main">
-      <div class="site-header">
-        <a href="{{ '/' | relative_url }}" class="site-title">Superdocs</a>
-      </div>
-
-    {% endif %}
       <div class="main-header">
+    {% else %}
+    <div class="main without-sidebar">
+      <div class="main-header">
+        <a href="{{ '/' | relative_url }}" class="site-title">Superdocs</a>
+    {% endif %}
 
+        <div class="flex-fill"></div>
+        <nav>
+          <ul class="aux-nav-list">
+            <li class="aux-nav-list-item">
+              <a href="//github.com/just-the-docs/just-the-docs" class="site-button">
+                Just the Docs on GitHub
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div class="main-content-wrap">
         {{ content }}
+
+        {% if site.footer != false %}
+        <hr/>
+        {% include footer.html %}
+        {% endif %}
       </div>
     </div>
   </body>
