@@ -1,3 +1,5 @@
+$breakpoint: 50rem;
+
 html, body {
   font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
   font-size: inherit;
@@ -20,8 +22,12 @@ hr {
   height: 1px;
   padding: 0;
   margin: 2rem 0;
-  background-color: #eeebee;
+  background-color: #bababa;
   border: 0;
   box-sizing: content-box;
   overflow: visible;
+
+  @media (min-width: $breakpoint) {
+    margin: 2rem -30px;
+  }
 }

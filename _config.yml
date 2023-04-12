@@ -9,13 +9,14 @@ header:
   links:
     - label: View on Github
       url: https://github.com/someimportantcompany/jekyll-documentation
+      new: true
 
 sidebar:
   navigation:
     - label: Home
       url: /
-    - label: Configuration
-      url: /configuration
+    - label: Single Page
+      url: /single
 
 footer:
   back-to-top:
@@ -41,6 +42,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - .htaccess
+  - _includes/sidebar-layered.html
   - README.md
   - package.json
   - package-lock.json

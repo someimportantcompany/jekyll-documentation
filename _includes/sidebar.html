@@ -1,10 +1,16 @@
-<nav aria-label="Main" id="site-nav" class="site-nav">
+<nav class="site-nav">
   <ul>
+    {% for nav in site.sidebar.navigation %}
+    <li>
+      <a href="{{ nav.url | relative_url }}"
+        {% if nav.url == page.url %} class="active" {% endif %}
+        {% unless (nav.url | slice 0, 1) == / %} target="_blank" {% endunless %}>{{ nav.label }}</a>
+    </li>
+    {% endfor %}
+
+    {%- comment -%}
     <li>
       <a href="{{ '/' | relative_url }}">Home</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/docs/configuration/" class="nav-list-link active">Configuration</a>
     </li>
     <li class="active">
       <a href="#" class="sub-list-expander"><span></span></a>
@@ -57,31 +63,6 @@
         </li>
       </ul>
     </li>
-    <li>
-      <a href="/just-the-docs/docs/navigation-structure/">Navigation Structure</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/docs/customization/">Customization</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/docs/search/">Search</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/docs/index-test/">Markdown kitchen sink</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/CHANGELOG/">CHANGELOG</a>
-    </li>
-    <li>
-      <a href="/just-the-docs/MIGRATION/">Migration and Upgrading</a>
-    </li>
-  </ul>
-
-  <ul>
-    <li>
-      <a href="https://github.com/just-the-docs/just-the-docs" class="nav-list-link external">
-        Just the Docs on GitHub
-      </a>
-    </li>
+    {%- endcomment -%}
   </ul>
 </nav>
