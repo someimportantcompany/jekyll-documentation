@@ -148,15 +148,40 @@ $breakpoint: 50rem;
     }
   }
 
-  .site-nav {
-    display: none;
+  .site-navigation {
+    // display: none;
+    height: 0;
+    opacity: 0;
+    overflow:hidden;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
 
     @media (min-width: $breakpoint) {
-      display: block;
+      // display: block;
+      height:auto;
+      opacity: 1;
       padding-top: 3rem;
       padding-bottom: 1rem;
       overflow-y: auto;
       flex: 1 1 auto;
+    }
+    &.expanded {
+      // display: block;
+      height:auto;
+      opacity: 1;
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+      overflow-y: auto;
+      flex: 1 1 auto;
+    }
+
+    .header-links {
+      display: block;
+
+      @media (min-width: $breakpoint) {
+        display: none;
+      }
     }
 
     ul {

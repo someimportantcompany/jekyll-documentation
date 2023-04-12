@@ -45,6 +45,15 @@
         function () {
           window.hljs && window.hljs.highlightAll();
         },
+        function () {
+          const menu = document.getElementById('menu-button');
+          const nav = document.getElementById('site-navigation');
+          if (menu && nav) {
+            menu.addEventListener('click', function () {
+              nav.classList.toggle('expanded');
+            });
+          }
+        },
       ]);
     </script>
   </head>
@@ -56,7 +65,10 @@
         <a href="#" id="menu-button" class="site-title-button">☰</a>
       </div>
 
-      {% include sidebar.html %}
+      <div class="site-navigation" id="site-navigation">
+        {% include sidebar.html %}
+        {% include header.html %}
+      </div>
     </div>
     <div class="main with-sidebar">
       <div class="main-header">
@@ -74,7 +86,7 @@
         {{ content }}
       </div>
 
-      {% if page.sidebar != false and site.footer != false %}
+      {% if page.footer != false and site.footer != false %}
       <footer>
         {% include footer.html %}
       </footer>
@@ -86,14 +98,14 @@
         if (document.readyState !== 'loading') triggerLoadQueue();
         else document.addEventListener('DOMContentLoaded', triggerLoadQueue);
       })(function triggerLoadQueue() {
-          // If any new loadQueue calls hit the array, automatically execute them
-          window.loadQueue.push = function(c) { c(); };
+        // If any new loadQueue calls hit the array, automatically execute them
+        window.loadQueue.push = function(c) { c(); };
 
-          // Run through each function in the loadQueue and execute them
-          (Array.isArray(window.loadQueue) ? window.loadQueue : [])
-            .filter(function (fn) { return typeof fn === 'function' })
-            .forEach(function (fn) { fn(); });
-        });
+        // Run through each function in the loadQueue and execute them
+        (Array.isArray(window.loadQueue) ? window.loadQueue : [])
+          .filter(function (fn) { return typeof fn === 'function' })
+          .forEach(function (fn) { fn(); });
+      });
     </script>
   </body>
 </html>
