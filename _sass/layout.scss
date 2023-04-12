@@ -11,7 +11,7 @@ $breakpoint: 50rem;
       margin-left: 248px;
     }
 
-    @media (min-width: calc($breakpoint + 16.5rem)) {
+    @media (min-width: 66.5rem) {
       margin-left: max( 264px, calc((100% - 1064px) / 2 + 264px) );
     }
 
