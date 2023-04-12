@@ -43,6 +43,7 @@ exclude:
   - vendor/ruby/
   - .htaccess
   - _includes/sidebar-layered.html
+  - LICENSE.md
   - README.md
   - package.json
   - package-lock.json
