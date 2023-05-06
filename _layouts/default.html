@@ -33,15 +33,9 @@
     <link href="{{ '/assets/style.css' | relative_url }}" rel="stylesheet" type="text/css"/>
     <link rel="icon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png"/>
 
-    <link rel="stylesheet" href="{{ '/assets/highlight.min.css' | relative_url }}" type="text/css"/>
-    <script src="{{ '/assets/highlight.min.js' | relative_url }}" type="text/javascript"></script>
-
     <script type="text/javascript">
       window.loadQueue = (Array.isArray(window.loadQueue) ? window.loadQueue : []).concat([
-        function () {
-          window.hljs && window.hljs.highlightAll();
-        },
-        function () {
+        function handleMobileSidebar() {
           const menu = document.getElementById('mobile-sidebar-button');
           const nav = document.getElementById('sidebar');
           if (menu && nav) {
@@ -50,7 +44,7 @@
             });
           }
         },
-        function () {
+        function handleExternalUrls() {
           const links = document.querySelectorAll('#content a[href]');
           Array.prototype.forEach.call(links, function (link) {
             if (link.href.startsWith('https://') || link.href.startsWith('http://') || link.href.startsWith('//')) {

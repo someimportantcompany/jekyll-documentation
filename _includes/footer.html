@@ -6,10 +6,11 @@
     <p>
       {% assign baseUrl = include.footer.gh-edit-link.baseUrl | default: 'https://github.com' %}
       {% assign repo = include.footer.gh-edit-link.repository | default: site.repository | default: 'someimportantcompany/jekyll-documentation' %}
-      {% assign branch = include.footer.gh-edit-link.branch | default: 'main' %}
       {% assign view = include.footer.gh-edit-link.view | default: 'edit' %}
+      {% assign branch = include.footer.gh-edit-link.branch | default: 'main' %}
+      {% assign path = include.footer.gh-edit-link.path | default: page.path %}
       {% assign label = include.footer.gh-edit-link.label | default: 'Edit this page on GitHub' %}
-      <a href="{{ baseUrl }}/{{ repo }}/{{ view }}/{{ branch }}/{{ page.path }}">{{ text }}</a>
+      <a href="{{ baseUrl }}/{{ repo }}/{{ view }}/{{ branch }}/{{ path }}">{{ label }}</a>
     </p>
   </div>
   {% endif %}

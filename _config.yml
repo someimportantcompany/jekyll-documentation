@@ -4,24 +4,6 @@ baseurl: /jekyll-documentation
 url: https://someimportantcompany.github.io
 repository: someimportantcompany/jekyll-documentation
 
-sidebar:
-  Documentation:
-    - label: Home
-      url: /
-    - label: Single Page
-      url: /single
-
-footer:
-  back-to-top:
-    label: Back to top
-  content: >-
-    Copyright © 2023 <a href="https://someimportantcompany.github.io" target="_blank">Some Important Company</a>.
-    <a href="https://github.com/someimportantcompany/jekyll-documentation/blob/master/LICENSE" target="_blank">MIT License</a>.
-  gh-edit-link:
-    repository: someimportantcompany/jekyll-documentation
-    branch: master
-    view: tree
-
 permalink: pretty
 exclude:
   - .jekyll-cache/
@@ -34,6 +16,7 @@ exclude:
   - package-lock.json
   - postcss.config.js
   - tailwind.config.js
+
 defaults:
   - scope:
       path: ""

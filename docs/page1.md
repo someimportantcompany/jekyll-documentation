@@ -1,15 +1,32 @@
 ---
-layout: default
-sidebar: false
-permalink: /single
+title: http-assert-plus
+permalink: /page1
+
+header:
+  title: Jekyll Documentation
+sidebar:
+  Documentation:
+    - label: Home
+      url: /
+    - label: http-assert-plus
+      url: /page1
+footer:
+  content: >-
+    Copyright © 2023 <a href="https://someimportantcompany.github.io" target="_blank">Some Important Company</a>.
+    <a href="https://github.com/someimportantcompany/jekyll-documentation/blob/master/LICENSE" target="_blank">MIT License</a>.
+  gh-edit-link:
+    repository: someimportantcompany/http-assert-plus
+    branch: master
+    view: tree
+    path: README.md
 ---
 
-# jekyll-documentation/single
+# (example): http-assert-plus
 
 [![NPM](https://badge.fury.io/js/http-assert-plus.svg)](https://npm.im/http-assert-plus)
-[![CI](https://github.com/jdrydn/http-assert-plus/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/jdrydn/http-assert-plus/actions/workflows/ci.yml)
+[![CI](https://github.com/someimportantcompany/http-assert-plus/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/someimportantcompany/http-assert-plus/actions/workflows/ci.yml)
 [![Typescript](https://img.shields.io/badge/TS-TypeScript-%230074c1.svg)](https://www.typescriptlang.org)
-<!-- [![Coverage](https://coveralls.io/repos/github/jdrydn/http-assert-plus/badge.svg)](https://coveralls.io/github/jdrydn/http-assert-plus) -->
+<!-- [![Coverage](https://coveralls.io/repos/github/someimportantcompany/http-assert-plus/badge.svg)](https://coveralls.io/github/someimportantcompany/http-assert-plus) -->
 
 More assertions with status codes.
 

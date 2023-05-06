@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # jekyll-documentation
 
 Clean documentation theme for Jekyll sites, adapting the ["Syntax" Tailwind example](https://syntax.tailwindui.com/).

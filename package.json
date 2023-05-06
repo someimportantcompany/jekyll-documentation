@@ -9,7 +9,7 @@
     "build:styles": "tailwindcss -i ./assets-dev/style.scss -o ./assets/style.css --minify",
     "dev": "run-p dev:jekyll dev:styles",
     "dev:jekyll": "jekyll serve",
-    "dev:styles": "tailwindcss -i ./assets-dev/style.scss -o ./assets/style.css --watch"
+    "dev:styles": "tailwindcss -i ./assets-dev/style.scss -o ./assets/style.css --minify --watch"
   },
   "repository": "https://github.com/someimportantcompany/jekyll-documentation.git",
   "bugs": "https://github.com/someimportantcompany/jekyll-documentation/issues",
