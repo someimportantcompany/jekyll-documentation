@@ -9,4 +9,10 @@
     display: inline-block;
     margin: 0;
   }
+
+  table code:only-child {
+    &:before, &:after {
+      content: "" !important;
+    }
+  }
 }

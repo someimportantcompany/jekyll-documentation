@@ -6,10 +6,12 @@ header:
   title: Jekyll Documentation
 sidebar:
   Documentation:
-    - label: Home
+    - label: jekyll-documentation
       url: /
     - label: http-assert-plus
       url: /page1
+    - label: jsonapi-resolvers
+      url: /page2
 footer:
   content: >-
     Copyright © 2023 <a href="https://someimportantcompany.github.io" target="_blank">Some Important Company</a>.
@@ -21,7 +23,7 @@ footer:
     path: README.md
 ---
 
-# (example): http-assert-plus
+# http-assert-plus
 
 [![NPM](https://badge.fury.io/js/http-assert-plus.svg)](https://npm.im/http-assert-plus)
 [![CI](https://github.com/someimportantcompany/http-assert-plus/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/someimportantcompany/http-assert-plus/actions/workflows/ci.yml)
