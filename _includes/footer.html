@@ -1,20 +1,26 @@
-{% if site.footer.back-to-top %}
-<p><a href="#top" id="back-to-top">{{ site.footer.back-to-top.label | default: 'Back to top' }}</a></p>
-{% endif %}
+<footer class="relative py-6">
+  <hr class="my-3"/>
 
-{% if site.footer.content %}
-{{ site.footer.content | markdownify }}
-{% endif %}
+  {% if include.footer.gh-edit-link %}
+  <div class="relative my-2 text-center text-sm text-slate-600">
+    <p>
+      {% assign baseUrl = include.footer.gh-edit-link.baseUrl | default: 'https://github.com' %}
+      {% assign repo = include.footer.gh-edit-link.repository | default: site.repository | default: 'someimportantcompany/jekyll-documentation' %}
+      {% assign branch = include.footer.gh-edit-link.branch | default: 'main' %}
+      {% assign view = include.footer.gh-edit-link.view | default: 'edit' %}
+      {% assign label = include.footer.gh-edit-link.label | default: 'Edit this page on GitHub' %}
+      <a href="{{ baseUrl }}/{{ repo }}/{{ view }}/{{ branch }}/{{ page.path }}">{{ text }}</a>
+    </p>
+  </div>
+  {% endif %}
 
-{% if site.footer.gh-edit-link %}
-<div class="d-flex mt-2">
-  <p class="text-small text-grey-dk-000 mb-0">
-    {% assign baseUrl = site.footer.gh-edit-link.baseUrl | default: 'https://github.com' %}
-    {% assign repo = site.footer.gh-edit-link.repository | default: site.repository %}
-    {% assign branch = site.footer.gh-edit-link.branch | default: 'main' %}
-    {% assign view = site.footer.gh-edit-link.view | default: 'edit' %}
-    {% assign label = site.footer.gh-edit-link.label | default: 'Edit this page on GitHub' %}
-    <a href="{{ baseUrl }}/{{ repo }}/{{ view }}/{{ branch }}/{{ page.path }}">{{ text }}</a>
-  </p>
-</div>
-{% endif %}
+  {% if include.footer.content %}
+  <div class="relative text-center text-sm text-slate-600">
+    {{ include.footer.content | markdownify }}
+  </div>
+  {% else %}
+  <div class="relative text-center text-sm text-slate-600">
+    <p>Copyright © {{ 'now' | date: "%Y" }}</p>
+  </div>
+  {% endif %}
+</footer>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="antialiased" lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {% if page.title %}
+    {% assign page_title = page_title | append: site.title | append: " | " | append: page.title %}
+    {% else %}
+    {% assign page_title = site.title %}
+    {% endif %}
+    <title>{{ page_title }}</title>
+    <meta property="og:title" content="{{ page_title }}"/>
+    <meta name="twitter:title" content="{{ page_title }}"/>
+
+    {%- if page.description -%}
+    <meta name="description" content="{{ page.description | markdownify | strip_html | strip_newlines }}"/>
+    <meta property="og:description" content="{{ page.description | markdownify | strip_html | strip_newlines }}"/>
+    <meta name="twitter:description" content="{{ page.description | markdownify | strip_html | strip_newlines }}"/>
+    {%- endif %}
+
+    {% if page.image -%}
+    <meta property="og:image" content="{{ page.image | absolute_url }}"/>
+    <meta name="twitter:image" content="{{ page.image | absolute_url }}"/>
+    {%- endif %}
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:dnt" content="on"/>
+    <meta property="og:type" content="blog"/>
+    <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}"/>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}"/>
+
+    <link href="{{ '/assets/style.css' | relative_url }}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png"/>
+
+    <!-- <link rel="stylesheet" href="{{ '/assets/highlight.min.css' | relative_url }}" type="text/css"/> -->
+    <!-- <script src="{{ '/assets/highlight.min.js' | relative_url }}" type="text/javascript"></script> -->
+
+    <script type="text/javascript">
+      window.loadQueue = (Array.isArray(window.loadQueue) ? window.loadQueue : []).concat([
+        // function () {
+        //   window.hljs && window.hljs.highlightAll();
+        // },
+        function () {
+          const menu = document.getElementById('mobile-sidebar-button');
+          const nav = document.getElementById('sidebar');
+          if (menu && nav) {
+            menu.addEventListener('click', function () {
+              nav.classList.toggle('hidden');
+            });
+          }
+        },
+      ]);
+    </script>
+  </head>
+  <body class="bg-white">
+    <header class="sticky top-0 z-50 bg-white py-5 shadow-md shadow-slate-900/5 transition duration-500 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between max-w-8xl mx-auto px-4 xl:px-16">
+        <div class="mr-6 flex lg:hidden">
+          <button type="button" class="relative" aria-label="Open navigation" id="mobile-sidebar-button">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" class="h-6 w-6 stroke-slate-500">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+          <div style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"></div>
+        </div>
+        <div class="relative flex flex-grow basis-0 items-center">
+          <a aria-label="Home page" href="/">
+            <span class="font-display font-medium text-2xl text-slate-900">Some Title</span>
+          </a>
+        </div>
+        <div class="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
+          <a class="group" aria-label="GitHub" href="https://github.com">
+              <svg aria-hidden="true" viewBox="0 0 16 16" class="h-6 w-6 fill-slate-400 group-hover:fill-slate-500">
+                <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"></path>
+              </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="relative mx-auto flex flex-col lg:flex-row max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
+      <div class="hidden relative lg:block flex-none" id="sidebar">
+        <div class="lg:absolute inset-y-0 right-0 w-[50vw] bg-slate-50"></div>
+        <div class="lg:absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-slate-800"></div>
+        <div class="lg:absolute bottom-0 right-0 top-28 hidden w-px bg-slate-800"></div>
+        <div class="lg:sticky lg:top-[4.5rem] ml-5 lg:-ml-0.5 lg:h-[calc(100vh-4.5rem)] lg:overflow-y-auto overflow-x-hidden py-16 pl-0.5">
+          <nav class="text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16">
+            <ul role="list" class="space-y-9">
+              <li>
+                <h2 class="font-display font-medium text-slate-900">Introduction</h2>
+                <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/">Getting started</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500" href="/docs/installation">Installation</a></li>
+                </ul>
+              </li>
+              <li>
+                <h2 class="font-display font-medium text-slate-900">Core concepts</h2>
+                <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/understanding-caching">Understanding caching</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/predicting-user-behavior">Predicting user behavior</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/basics-of-time-travel">Basics of time-travel</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/introduction-to-string-theory">Introduction to string theory</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/the-butterfly-effect">The butterfly effect</a></li>
+                </ul>
+              </li>
+              <li>
+                <h2 class="font-display font-medium text-slate-900">Advanced guides</h2>
+                <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/writing-plugins">Writing plugins</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/neuralink-integration">Neuralink integration</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/temporal-paradoxes">Temporal paradoxes</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/testing">Testing</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/compile-time-caching">Compile-time caching</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/predictive-data-generation">Predictive data generation</a></li>
+                </ul>
+              </li>
+              <li>
+                <h2 class="font-display font-medium text-slate-900">API reference</h2>
+                <ul role="list" class="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/cacheadvance-predict">CacheAdvance.predict()</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/cacheadvance-flush">CacheAdvance.flush()</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/cacheadvance-revert">CacheAdvance.revert()</a></li>
+                  <li class="relative"><a class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block" href="/docs/cacheadvance-regret">CacheAdvance.regret()</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="min-w-0 max-w-4xl flex-auto px-4 py-16 lg:pl-8 lg:pr-0 xl:px-16">
+        <article>
+          <div class="prose prose-slate max-w-none prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 prose-a:font-semibold prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg">
+            <h1>Installation</h1>
+            <p>Quasi sapiente voluptates aut minima non doloribus similique quisquam. In quo expedita ipsum nostrum corrupti incidunt. Et aut eligendi ea perferendis.</p>
+            <hr>
+            <h2 id="quis-vel-iste-dicta">Quis vel iste dicta</h2>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.</p>
+            <h3 id="et-pariatur-ab-quas">Et pariatur ab quas</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <pre class="prism-code language-js">
+              <code><span class="token comment">/** @type {import('@tailwindlabs/lorem').ipsum} */</span><span class="token plain"></span><span class="token plain"></span><span class="token keyword module">export</span><span class="token plain"> </span><span class="token keyword module">default</span><span class="token plain"> </span><span class="token punctuation">{</span><span class="token plain"></span><span class="token plain">  </span><span class="token literal-property property">lorem</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string">'ipsum'</span><span class="token punctuation">,</span><span class="token plain"></span><span class="token plain">  </span><span class="token literal-property property">dolor</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation">[</span><span class="token string">'sit'</span><span class="token punctuation">,</span><span class="token plain"> </span><span class="token string">'amet'</span><span class="token punctuation">,</span><span class="token plain"> </span><span class="token string">'consectetur'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token plain"></span><span class="token plain">  </span><span class="token literal-property property">adipiscing</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation">{</span><span class="token plain"></span><span class="token plain">    </span><span class="token literal-property property">elit</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token plain"></span><span class="token plain">  </span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token plain"></span><span class="token plain"></span><span class="token punctuation">}</span></code>
+            </pre>
+            <p>Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.</p>
+            <h3 id="natus-aspernatur-iste">Natus aspernatur iste</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.</p>
+            <hr>
+            <h2 id="quos-porro-ut-molestiae">Quos porro ut molestiae</h2>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.</p>
+            <h3 id="voluptatem-quas-possimus">Voluptatem quas possimus</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.</p>
+            <h3 id="id-vitae-minima">Id vitae minima</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.</p>
+            <hr>
+            <h2 id="vitae-laborum-maiores">Vitae laborum maiores</h2>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.</p>
+            <h3 id="corporis-exercitationem">Corporis exercitationem</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.</p>
+            <h3 id="reprehenderit-magni">Reprehenderit magni</h3>
+            <p>Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.</p>
+            <p>Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.</p>
+          </div>
+        </article>
+
+        <footer class="relative py-6">
+          <hr class="my-3"/>
+          <div class="relative text-center text-sm text-slate-600">
+            <p>Copyright © <!-- -->2023<!-- --> Lindehoff Design, LLC</p>
+            <p>All rights reserved.</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      (function (triggerLoadQueue) {
+        if (document.readyState !== 'loading') triggerLoadQueue();
+        else document.addEventListener('DOMContentLoaded', triggerLoadQueue);
+      })(function triggerLoadQueue() {
+        // If any new loadQueue calls hit the array, automatically execute them
+        window.loadQueue.push = function(c) { c(); };
+
+        // Run through each function in the loadQueue and execute them
+        (Array.isArray(window.loadQueue) ? window.loadQueue : [])
+          .filter(function (fn) { return typeof fn === 'function' })
+          .forEach(function (fn) { fn(); });
+      });
+    </script>
+  </body>
+</html>

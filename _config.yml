@@ -4,15 +4,8 @@ baseurl: /jekyll-documentation
 url: https://someimportantcompany.github.io
 repository: someimportantcompany/jekyll-documentation
 
-header:
-  title: Jekyll Documentation
-  links:
-    - label: View on Github
-      url: https://github.com/someimportantcompany/jekyll-documentation
-      new: true
-
 sidebar:
-  navigation:
+  Documentation:
     - label: Home
       url: /
     - label: Single Page
@@ -33,19 +26,16 @@ permalink: pretty
 exclude:
   - .jekyll-cache/
   - .sass-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
+  - assets-dev/
   - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
   - .htaccess
-  - _includes/sidebar-layered.html
   - LICENSE.md
-  - README.md
   - package.json
   - package-lock.json
   - postcss.config.js
   - tailwind.config.js
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

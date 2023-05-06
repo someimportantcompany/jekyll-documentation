@@ -1,7 +1,11 @@
+---
+layout: default
+---
+
 # jekyll-documentation
 
-Heavily based on [Just-The-Docs](https://just-the-docs.github.io/just-the-docs/) with some key differences:
+Clean documentation theme for Jekyll sites, adapting the ["Syntax" Tailwind example](https://syntax.tailwindui.com/).
 
 - No `Gemfile`/additional Gems beyond what Github Pages includes by default.
 - No search features.
-- Hide the sidebar using YAML config, so configurable on a per-site instance.
+- Configuration using YAML config, so configurable on a per-site/per-page instance.

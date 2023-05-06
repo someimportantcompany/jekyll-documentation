@@ -42,62 +42,55 @@
           window.hljs && window.hljs.highlightAll();
         },
         function () {
-          const menu = document.getElementById('mobile-sidebar-button');
-          const nav = document.getElementById('sidebar');
+          const menu = document.getElementById('menu-button');
+          const nav = document.getElementById('site-navigation');
           if (menu && nav) {
             menu.addEventListener('click', function () {
-              nav.classList.toggle('hidden');
+              nav.classList.toggle('expanded');
             });
           }
-        },
-        function () {
-          const links = document.querySelectorAll('#content a[href]');
-          Array.prototype.forEach.call(links, function (link) {
-            if (link.href.startsWith('https://') || link.href.startsWith('http://') || link.href.startsWith('//')) {
-              link.setAttribute('target', '_blank');
-            }
-          });
         },
       ]);
     </script>
   </head>
   <body class="bg-white">
-    {% if page.header != nil %}
-    {% assign headerBlock = page.header %}
-    {% else %}
-    {% assign headerBlock = site.header %}
-    {% endif %}
-    {% if page.sidebar != nil %}
-    {% assign sidebarBlock = page.sidebar %}
-    {% else %}
-    {% assign sidebarBlock = site.sidebar %}
-    {% endif %}
-    {% if page.footer != nil %}
-    {% assign footerBlock = page.footer %}
-    {% else %}
-    {% assign footerBlock = site.footer %}
-    {% endif %}
+    {% assign headerBlock = page.header | default: site.header, allow_false: true %}
+    {% assign sidebarBlock = page.sidebar | default: site.sidebar, allow_false: true %}
+    {% assign footerBlock = page.footer | default: site.footer, allow_false: true %}
 
-    {% if headerBlock != false and headerBlock != nil and sidebarBlock != false and sidebarBlock != nil %}
-    {% include header.html header=headerBlock sidebar=sidebarBlock %}
-    {% endif %}
-
-    <div class="relative mx-auto flex flex-col lg:flex-row max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
-      {% if headerBlock != false and headerBlock != nil and sidebarBlock != false and sidebarBlock != nil %}
-      {% include sidebar.html header=headerBlock sidebar=sidebarBlock %}
-      {% endif %}
-
-      <div class="min-w-0 max-w-4xl flex-auto px-4 py-16 lg:pl-8 lg:pr-0 xl:px-16">
-        <article>
-          <div class="prose prose-slate max-w-none prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 prose-a:font-semibold prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg" id="content">
-            {{ content }}
-          </div>
-        </article>
-
-        {% if footerBlock != false and footerBlock != nil %}
-        {% include footer.html footer=footerBlock %}
-        {% endif %}
+    {% if sidebarBlock != false %}
+    <div class="sidebar">
+      <div class="site-header">
+        <a href="{{ '/' | relative_url }}" class="site-title">Superdocs</a>
+        <a href="#" id="menu-button" class="site-title-button">☰</a>
       </div>
+
+      <div class="site-navigation" id="site-navigation">
+        {% include sidebar.html sidebar=sidebarBlock %}
+        {% include header.html header=headerBlock %}
+      </div>
+    </div>
+    <div class="main with-sidebar">
+      <div class="main-header">
+    {% else %}
+    <div class="main without-sidebar">
+      <div class="main-header">
+        <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+    {% endif %}
+
+        <div class="flex-fill"></div>
+        {% include header.html header=headerBlock %}
+      </div>
+
+      <div class="main-content-wrap">
+        {{ content }}
+      </div>
+
+      {% if footerBlock != false %}
+      <footer>
+        {% include footer.html footer=footerBlock %}
+      </footer>
+      {% endif %}
     </div>
 
     <script type="text/javascript">
