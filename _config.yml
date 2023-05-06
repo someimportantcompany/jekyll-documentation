@@ -1,7 +1,6 @@
 title: Jekyll Documentation
 description:
 baseurl: /jekyll-documentation
-url: https://someimportantcompany.github.io
 repository: someimportantcompany/jekyll-documentation
 
 permalink: pretty
