@@ -2,7 +2,7 @@
 <html class="antialiased" lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 
     {% if page.title %}
     {% assign page_title = page_title | append: site.title | append: " | " | append: page.title %}
@@ -47,7 +47,8 @@
         function handleExternalUrls() {
           const links = document.querySelectorAll('#content a[href]');
           Array.prototype.forEach.call(links, function (link) {
-            if (link.href.startsWith('https://') || link.href.startsWith('http://') || link.href.startsWith('//')) {
+            const href = link.getAttribute('href');
+            if (href && (href.startsWith('https://') || href.startsWith('http://') || href.startsWith('//'))) {
               link.setAttribute('target', '_blank');
             }
           });

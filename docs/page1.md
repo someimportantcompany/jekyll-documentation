@@ -1,6 +1,5 @@
 ---
 title: http-assert-plus
-permalink: /page1
 
 header:
   title: Jekyll Documentation
@@ -9,9 +8,9 @@ sidebar:
     - label: jekyll-documentation
       url: /
     - label: http-assert-plus
-      url: /page1
+      url: /docs/page1/
     - label: jsonapi-resolvers
-      url: /page2
+      url: /docs/page2/
 footer:
   content: >-
     Copyright © 2023 <a href="https://someimportantcompany.github.io" target="_blank">Some Important Company</a>.

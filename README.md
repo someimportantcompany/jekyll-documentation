@@ -1,3 +1,7 @@
+---
+permalink: /
+---
+
 # jekyll-documentation
 
 Clean documentation theme for Jekyll sites, adapting the ["Syntax" Tailwind example](https://syntax.tailwindui.com/).
@@ -5,3 +9,8 @@ Clean documentation theme for Jekyll sites, adapting the ["Syntax" Tailwind exam
 - No `Gemfile`/additional Gems beyond what Github Pages includes by default.
 - No search features.
 - Configuration using YAML config, so configurable on a per-site/per-page instance.
+
+## Example pages
+
+- [`http-assert-plus`](./docs/page1)
+- [`jsonapi-resolvers`](./docs/page2)

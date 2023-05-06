@@ -10,6 +10,10 @@
     margin: 0;
   }
 
+  table {
+    @apply overflow-x-scroll lg:overflow-x-auto;
+  }
+
   table code:only-child {
     &:before, &:after {
       content: "" !important;
